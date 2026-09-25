@@ -253,28 +253,44 @@ input {
 
         @media (max-width: 800px) {
 
+    body {
+        overflow-x: hidden;
+    }
+
     .container {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 15px;
+        margin: 20px auto;
     }
 
-    .left {
-        display: contents;
-    }
-
+    .left,
     .right {
-        display: contents;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        min-width: 0;
     }
 
+    .card,
     .reminder {
-        order: 1;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .left .card {
-        order: 2;
+    .kartu-container {
+        flex-wrap: wrap;
     }
 
-    .right .card {
-        order: 3;
+    .kartu-pokok {
+        flex: 1 1 calc(50% - 8px);
+    }
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
     }
 
 }
