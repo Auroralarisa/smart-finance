@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Finance</title>
+
+    <style>
+
+        /* =========================
+           DASAR HALAMAN
+        ========================= */
+
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3faf7;
+    color: #4e4036;
+}
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+    background: linear-gradient(135deg, #5FBEA5, #82CDB9);
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+        }
+
+        header p {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           CONTAINER UTAMA
+        ========================= */
+
+       .container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 20px;
+
+    max-width: 1200px;
+    margin: 25px auto;
+
+    padding: 0 20px;
+}
+
+        /* =========================
+           BAGIAN KIRI
+        ========================= */
+
+        .left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+}
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background-color: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            margin-top: 0;
+        }
+
+        .card p {
+    line-height: 1.6;
+    color: #76665b;
+	}
+
+        /* =========================
+           TOMBOL
+        ========================= */
+
+        
+button {
+    background-color: #795548;            
+		color: white;
+
+            border: none;
+
+            padding: 12px 22px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+        }
+
+        button:hover {
+    background-color: #795548;
+}
+
+input {
+    width: 90%;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid #d0d7e2;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+#hasilHarga {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e3f5ef;
+    border-radius: 12px;
+    line-height: 1.7;
+}
+.kartu-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    margin-top: 15px;
+}
+
+.kartu-pokok {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #c8ddd6;
+    border-radius: 12px;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.kartu-pokok:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.kartu-pokok .ikon {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.kartu-pokok h3 {
+    margin: 5px 0;
+}
+
+.kartu-pokok p {
+    margin: 0;
+    font-size: 14px;
+}
+
+        /* =========================
+           REMINDER
+        ========================= */
+
+        .reminder {
+            background-color: white;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+
+            min-height: 300px;
+        }
+
+        .reminder h2 {
+            margin-top: 0;
+        }
+
+
+        /* =========================
+           KARTU PESAN
+        ========================= */
+
+.reminder-box {
+    background-color: #dff3ec;
+    border-radius: 15px;
+
+    padding: 25px;
+
+    margin-top: 20px;
+
+    text-align: center;
+
+    min-height: 150px;
+
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.reminder-track {
+    display: flex;
+    width: 100%;
+    transition: transform 0.8s ease-in-out;
+}
+
+.reminder-slide {
+    min-width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 150px;
+}
+
+.reminder-slide p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}        
+
+        /* =========================
+           RESPONSIVE HP
+        ========================= */
+
+        @media (max-width: 800px) {
+
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .left {
+        display: contents;
+    }
+
+    .right {
+        display: contents;
+    }
+
+    .reminder {
+        order: 1;
+    }
+
+    .left .card {
+        order: 2;
+    }
+
+    .right .card {
+        order: 3;
+    }
+
+}
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>SMART FINANCE</h1>
+
+        <p>
+            Kelola Uangmu, Sebelum Uangmu Habis
+        </p>
+
+    </header>
+
+
+
+    <!-- KONTEN UTAMA -->
+
+    <div class="container">
+
+
+        <!-- BAGIAN KIRI -->
+
+        <div class="left">
+
+
+            <!-- PERTIMBANGAN -->
+
+            <div class="card">
+
+    <h2>
+        🛒 Pertimbangkan Sebelum Membeli
+    </h2>
+
+    <p>
+        Masukkan harga barang yang ingin kamu beli
+        untuk melihat perbandingannya dengan kebutuhan pokok.
+    </p>
+
+
+    <label for="hargaBarang">
+    Berapa uang yang ingin kamu keluarkan?
+</label>
+
+<input
+    type="text"
+    id="hargaBarang"
+    placeholder="Contoh: 150.000"
+    oninput="formatRupiah(this)"
+>
+
+<br><br>
+
+<button onclick="hitungHarga()">
+    Cek Harga
+</button>
+
+<p>
+    Pilih kebutuhan yang ingin kamu bandingkan:
+</p>
+
+<div class="kartu-container">
+
+    <div class="kartu-pokok" onclick="hitungBarang('beras')">
+        <div class="ikon">🍚</div>
+        <h3>Beras</h3>
+        <p>Per kg</p>
+    </div>
+
+    <div class="kartu-pokok" onclick="hitungBarang('telur')">
+        <div class="ikon">🥚</div>
+        <h3>Telur</h3>
+        <p>Per butir</p>
+    </div>
+
+    <div class="kartu-pokok" onclick="hitungBarang('minyak')">
+        <div class="ikon">🛢️</div>
+        <h3>Minyak</h3>
+        <p>Per liter</p>
+    </div>
+
+    <div class="kartu-pokok" onclick="hitungBarang('mi')">
+        <div class="ikon">🍜</div>
+        <h3>Mi Instan</h3>
+        <p>Per bungkus</p>
+    </div>
+
+    <div class="kartu-pokok" onclick="hitungBarang('air')">
+        <div class="ikon">💧</div>
+        <h3>Air Galon</h3>
+        <p>Per galon</p>
+    </div>
+
+</div>
+
+<div id="hasilHarga"></div>
+
+</div>  <!-- penutup card Pertimbangan -->
+
+</div>  <!-- PENUTUP .left -->
+
+
+<!-- BAGIAN KANAN -->
+
+<div class="right">
+
+    <!-- REMINDER -->
+
+    <div class="reminder">
+
+        <h2>
+            💡 Reminder
+        </h2>
+
+        <div class="reminder-box">
+
+    <div class="reminder-track" id="reminderTrack">
+
+        <!-- Reminder akan dimasukkan otomatis oleh JavaScript -->
+
+    </div>
+
+</div>
+    
+    <!-- KEUANGAN -->
+
+    <div class="card">
+
+        <h2>
+            💰 Keuangan
+        </h2>
+
+        <p>
+            Rencanakan dan catat pengeluaranmu
+            agar penggunaan uang lebih terkontrol.
+	</p>
+
+	<p>
+	Gunakan template Google Sheets berikut untuk membantu mencatat 	dan mengatur keuanganmu.
+        </p>
+
+        <button onclick="bukaKeuangan()">
+            💰 Buka Template Keuangan
+        </button>
+
+    </div>
+
+</div>
+
+    </div>
+
+<script>
+
+const reminders = [
+    "Apakah barang yang ingin kamu beli benar-benar kamu butuhkan?🤔",
+
+    "😨Cukup lambungmu aja yang geter, dompetmu jangan‼️",
+
+    "🛒Lagi diskon bukan berarti wajib checkout.\nDompetmu juga butuh istirahat💸💸💸",
+
+    "Gunakan Aturan 24 Jam⏰: Tunda dulu seharian. Kalau besok masih butuh banget, baru dipertimbangkan lagi YAAAAA",
+
+    "Barang ini 📦 bakal sering dipakai dalam beberapa bulan ke depan, atau cuma bakal numpuk di kamar?",
+
+    "Awal bulan: sekali-sekali gapapa🤭\nAkhir bulan: kok uangku tinggal segini?🫢",
+
+    "Hitung ulang: Harga barang ini setara dengan berapa porsi makan harianmu? 🍽️",
+
+    "👀Apakah kamu membeli ini karena fungsi barangnya, atau cuma lapar mata/ikutan tren?",
+];
+
+let reminderIndex = 0;
+
+const reminderTrack = document.getElementById("reminderTrack");
+
+
+// Membuat semua reminder
+reminders.forEach(function(reminder) {
+
+    const slide = document.createElement("div");
+
+    slide.className = "reminder-slide";
+
+    slide.innerHTML = "<p>" + reminder.replace(/\n/g, "<br>") + "</p>";
+
+    reminderTrack.appendChild(slide);
+
+});
+
+
+// Tambahkan clone reminder pertama di paling akhir
+const firstSlide = reminderTrack.firstElementChild.cloneNode(true);
+
+reminderTrack.appendChild(firstSlide);
+
+
+// Fungsi untuk menggeser reminder
+function tampilkanReminder() {
+
+    reminderIndex++;
+
+    reminderTrack.style.transform =
+        "translateX(-" + (reminderIndex * 100) + "%)";
+
+}
+
+
+// Setelah sampai clone pertama
+reminderTrack.addEventListener("transitionend", function() {
+
+    if (reminderIndex === reminders.length) {
+
+        reminderTrack.style.transition = "none";
+
+        reminderIndex = 0;
+
+        reminderTrack.style.transform = "translateX(0)";
+
+        // Paksa browser membaca posisi baru
+        reminderTrack.offsetHeight;
+
+        reminderTrack.style.transition =
+            "transform 0.8s ease-in-out";
+    }
+
+});
+
+
+// Mulai dari reminder pertama
+reminderTrack.style.transform = "translateX(0)";
+
+
+// Ganti reminder setiap 6 detik
+setInterval(tampilkanReminder, 6000);
+
+function formatRupiah(input) {
+
+    let angka = input.value.replace(/\D/g, "");
+
+    input.value = angka.replace(
+        /\B(?=(\d{3})+(?!\d))/g,
+        "."
+    );
+}
+
+function ambilHarga() {
+
+    let nilai = document.getElementById("hargaBarang").value;
+
+    // Hapus titik pemisah ribuan
+    nilai = nilai.replace(/\./g, "");
+
+    return Number(nilai);
+}
+
+function hitungHarga() {
+
+    let harga = ambilHarga();
+
+    if (harga <= 0) {
+
+        document.getElementById("hasilHarga").innerHTML =
+            "Silakan masukkan harga terlebih dahulu.";
+
+        return;
+    }
+
+    document.getElementById("hasilHarga").innerHTML =
+        "Silakan pilih kebutuhan yang ingin dibandingkan.";
+}
+
+function hitungBarang(barang) {
+
+    let harga = ambilHarga();
+
+    let hargaSatuan;
+    let satuan;
+    let namaBarang;
+    let ikonBarang;
+    let jumlah;
+
+    if (barang === "beras") {
+        hargaSatuan = 15000;
+        satuan = "kg";
+        namaBarang = "Beras";
+        ikonBarang = "🍚";
+    }
+
+    else if (barang === "telur") {
+        hargaSatuan = 2000;
+        satuan = "butir";
+        namaBarang = "Telur";
+        ikonBarang = "🥚";
+    }
+
+    else if (barang === "minyak") {
+        hargaSatuan = 20000;
+        satuan = "liter";
+        namaBarang = "Minyak Goreng";
+        ikonBarang = "🛢️";
+    }
+
+    else if (barang === "mi") {
+        hargaSatuan = 3000;
+        satuan = "bungkus";
+        namaBarang = "Mi Instan";
+        ikonBarang = "🍜";
+    }
+
+    else if (barang === "air") {
+        hargaSatuan = 8000;
+        satuan = "galon";
+        namaBarang = "Air Galon";
+        ikonBarang = "💧";
+    }
+
+    jumlah = harga / hargaSatuan;
+
+if (barang === "beras" || barang === "minyak") {
+    jumlah = jumlah.toFixed(2);
+} else {
+    jumlah = Math.floor(jumlah);
+}
+
+    document.getElementById("hasilHarga").innerHTML =
+
+    "<div class='hasil-kartu'>" +
+
+    "<strong>💡 Dengan uang Rp" +
+    harga.toLocaleString("id-ID") +
+    ", kamu bisa mendapatkan sekitar:</strong><br><br>" +
+
+    "<h3>" + ikonBarang + " " + namaBarang + "</h3>" +
+
+    "<h2>" + jumlah + " " + satuan + "</h2>" +
+
+    "<p>Harga acuan: Rp" +
+    hargaSatuan.toLocaleString("id-ID") +
+    " / " + satuan + "</p>" +
+
+    "</div>";
+}
+
+function bukaKeuangan() {
+
+    window.open(
+        "https://docs.google.com/spreadsheets/d/1_LZoYBN1BzUdV_y0JffvfZ4cbiyXXjxIwBNjkSb7EH8/copy",
+        "_blank"
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>ds
