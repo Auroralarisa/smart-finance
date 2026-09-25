@@ -259,10 +259,12 @@ input {
 
     .container {
         display: grid;
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-        gap: 10px;
+        grid-template-columns: 2fr 1fr;
+        gap: 8px;
+
         width: 100%;
-        max-width: 100%;
+        max-width: none;
+
         box-sizing: border-box;
         padding: 0 8px;
         margin: 15px auto;
@@ -271,14 +273,12 @@ input {
     .left {
         grid-column: 1;
         grid-row: 1;
-        width: 100%;
         min-width: 0;
     }
 
     .right {
         grid-column: 2;
         grid-row: 1;
-        width: 100%;
         min-width: 0;
     }
 
@@ -286,51 +286,88 @@ input {
     .reminder {
         width: 100%;
         box-sizing: border-box;
-        padding: 15px;
+        padding: 12px;
     }
 
+    /* Judul diperkecil */
     .card h2,
     .reminder h2 {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     .card p {
-        font-size: 13px;
+        font-size: 10px;
+        line-height: 1.4;
     }
 
+    /* Input tetap mengikuti lebar kolom */
     input {
         width: 100%;
         box-sizing: border-box;
+        padding: 8px;
+        font-size: 11px;
     }
 
-    /* KARTU KEBUTUHAN */
+    /* Tombol diperkecil */
+    button {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    /* =========================
+       KARTU KEBUTUHAN
+    ========================= */
 
     .kartu-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 3px;
+        width: 100%;
     }
 
     .kartu-pokok {
-        width: 100%;
+        flex: 1 1 0;
         min-width: 0;
+        padding: 5px 2px;
         box-sizing: border-box;
-        padding: 7px 3px;
     }
 
     .kartu-pokok .ikon {
-        font-size: 22px;
-        margin-bottom: 3px;
+        font-size: 18px;
+        margin-bottom: 2px;
     }
 
     .kartu-pokok h3 {
-        font-size: 12px;
-        margin: 3px 0;
+        font-size: 8px;
+        margin: 2px 0;
     }
 
     .kartu-pokok p {
-        font-size: 10px;
+        font-size: 7px;
         margin: 0;
+    }
+
+    /* =========================
+       REMINDER
+    ========================= */
+
+    .reminder {
+        min-height: 180px;
+    }
+
+    .reminder-box {
+        padding: 8px;
+        min-height: 100px;
+    }
+
+    .reminder-slide {
+        min-height: 100px;
+    }
+
+    .reminder-slide p {
+        font-size: 10px;
+        padding: 5px;
+        line-height: 1.4;
     }
 
 }
