@@ -228,16 +228,21 @@ input {
     display: flex;
     width: 100%;
     transition: transform 0.8s ease-in-out;
+	overflow: hidden;
 }
 
 .reminder-slide {
     min-width: 100%;
+	max-width: 100%;
+    box-sizing: border-box;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     min-height: 150px;
+
+    overflow: hidden;
 }
 
 .reminder-slide p {
