@@ -255,27 +255,29 @@ input {
 
     body {
         overflow-x: hidden;
-	width: 100%;
     }
-
-header {
-    width: 100%;
-    box-sizing: border-box;
-}
 
     .container {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        gap: 10px;
         width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
-        padding: 0 15px;
-        margin: 20px auto;
+        padding: 0 8px;
+        margin: 15px auto;
     }
 
-    .left,
+    .left {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+        min-width: 0;
+    }
+
     .right {
-        display: flex;
-        flex-direction: column;
+        grid-column: 2;
+        grid-row: 1;
         width: 100%;
         min-width: 0;
     }
@@ -284,14 +286,16 @@ header {
     .reminder {
         width: 100%;
         box-sizing: border-box;
+        padding: 15px;
     }
 
-    .kartu-container {
-        flex-wrap: wrap;
+    .card h2,
+    .reminder h2 {
+        font-size: 18px;
     }
 
-    .kartu-pokok {
-        flex: 1 1 calc(50% - 8px);
+    .card p {
+        font-size: 13px;
     }
 
     input {
@@ -299,7 +303,38 @@ header {
         box-sizing: border-box;
     }
 
+    /* KARTU KEBUTUHAN */
+
+    .kartu-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .kartu-pokok {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 7px 3px;
+    }
+
+    .kartu-pokok .ikon {
+        font-size: 22px;
+        margin-bottom: 3px;
+    }
+
+    .kartu-pokok h3 {
+        font-size: 12px;
+        margin: 3px 0;
+    }
+
+    .kartu-pokok p {
+        font-size: 10px;
+        margin: 0;
+    }
+
 }
+		
     </style>
 
 </head>
