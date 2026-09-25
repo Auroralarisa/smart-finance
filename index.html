@@ -540,9 +540,9 @@ const reminders = [
 
     "😨Cukup lambungmu aja yang geter, dompetmu jangan‼️",
 
-    "🛒Lagi diskon bukan berarti wajib checkout.\nDompetmu juga butuh istirahat💸",
+    "🛒Lagi diskon bukan berarti wajib checkout.\nDompetmu juga butuh istirahat💸💸💸",
 
-    "Gunakan Aturan 24 Jam⏰: Tunda dulu. Kalau besok masih butuh banget, baru dipertimbangkan lagi YAAAA",
+    "Gunakan Aturan 24 Jam⏰: Tunda dulu seharian. Kalau besok masih butuh banget, baru dipertimbangkan lagi YAAAAA",
 
     "Barang ini 📦 bakal sering dipakai dalam beberapa bulan ke depan, atau cuma bakal numpuk di kamar?",
 
@@ -565,27 +565,27 @@ reminders.forEach(function(reminder) {
 
     slide.className = "reminder-slide";
 
-    slide.innerHTML = "<p>" + reminder.replace(/\n/g, "<br>") + "</p>";
+    slide.innerHTML =
+        "<p>" + reminder.replace(/\n/g, "<br>") + "</p>";
 
     reminderTrack.appendChild(slide);
 
 });
 
 
-// Tambahkan clone reminder pertama di paling akhir
+// Tambahkan clone reminder pertama di akhir
 const firstSlide = reminderTrack.firstElementChild.cloneNode(true);
 
 reminderTrack.appendChild(firstSlide);
 
 
-// Fungsi untuk menggeser reminder
+// Fungsi mengganti reminder
 function tampilkanReminder() {
 
     reminderIndex++;
 
     reminderTrack.style.transform =
         "translateX(-" + (reminderIndex * 100) + "%)";
-
 }
 
 
@@ -600,7 +600,6 @@ reminderTrack.addEventListener("transitionend", function() {
 
         reminderTrack.style.transform = "translateX(0)";
 
-        // Paksa browser membaca posisi baru
         reminderTrack.offsetHeight;
 
         reminderTrack.style.transition =
